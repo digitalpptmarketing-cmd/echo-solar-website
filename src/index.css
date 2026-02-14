@@ -1,0 +1,17 @@
+@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes rise {
+  0% {
+    transform: translate(-50%, 100%);
+  }
+  100% {
+    transform: translate(-50%, -20%);
+  }
+}
+
+.animate-rise {
+  animation: rise 2s ease-out infinite alternate;
+}
