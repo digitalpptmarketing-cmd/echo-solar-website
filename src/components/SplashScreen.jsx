@@ -8,55 +8,38 @@ export default function SplashScreen({ onFinish }) {
       setProgress((prev) => {
         if (prev >= 100) {
           clearInterval(timer);
-          setTimeout(() => onFinish(), 500);
+          setTimeout(onFinish, 500);
           return 100;
         }
         return prev + 1;
       });
-    }, 35);
+    }, 30);
 
     return () => clearInterval(timer);
   }, []);
 
   return (
-    <div className="fixed inset-0 flex flex-col items-center justify-center overflow-hidden z-50">
+    <div className="fixed inset-0 overflow-hidden flex items-center justify-center z-50">
 
-      {/* SKY BACKGROUND */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#020024] via-[#090979] to-[#ff7e00] transition-all duration-1000"></div>
+      {/* Sky */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0a1a2f] via-[#183b6b] to-[#ff914d] transition-all duration-1000"></div>
 
-      {/* HORIZON */}
-      <div className="absolute bottom-0 w-full h-32 bg-[#2c2c2c]"></div>
+      {/* Horizon */}
+      <div className="absolute bottom-0 w-full h-36 bg-[#1a1a1a]"></div>
 
-      {/* SUN */}
+      {/* Sun */}
       <div
-        className="absolute left-1/2 -translate-x-1/2"
+        className="absolute left-1/2 -translate-x-1/2 transition-all duration-300"
         style={{
-          bottom: `${progress * 0.5}px`, // sun rises with percentage
+          bottom: `${progress * 0.6}px`,
         }}
       >
-        {/* Glow */}
-        <div className="absolute w-40 h-40 bg-yellow-400 rounded-full blur-3xl opacity-70"></div>
-
-        {/* Sun core */}
-        <div className="relative w-28 h-28 bg-gradient-to-br from-yellow-300 to-orange-500 rounded-full shadow-[0_0_60px_rgba(255,200,0,0.9)]"></div>
-
-        {/* Rays */}
-        <div className="absolute inset-0 animate-spin-slow">
-          {Array.from({ length: 8 }).map((_, i) => (
-            <div
-              key={i}
-              className="absolute w-1 h-16 bg-yellow-300 opacity-60 left-1/2 top-1/2 origin-bottom"
-              style={{
-                transform: `rotate(${i * 45}deg) translateX(-50%)`,
-              }}
-            />
-          ))}
-        </div>
+        <div className="w-32 h-32 rounded-full bg-gradient-to-br from-yellow-300 via-orange-400 to-orange-600 shadow-[0_0_80px_rgba(255,170,0,0.8)]"></div>
       </div>
 
-      {/* LOADING TEXT */}
-      <div className="absolute bottom-20 text-white text-2xl font-semibold">
-        Loading {progress}%
+      {/* Loading Text */}
+      <div className="absolute bottom-16 text-white text-2xl tracking-widest font-light">
+        {progress}%
       </div>
     </div>
   );
