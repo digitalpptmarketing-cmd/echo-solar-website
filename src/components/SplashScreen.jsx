@@ -13,25 +13,51 @@ export default function SplashScreen({ onFinish }) {
         }
         return prev + 1;
       });
-    }, 30);
+    }, 35);
 
     return () => clearInterval(timer);
   }, []);
 
   return (
-    <div className="fixed inset-0 bg-black flex flex-col items-center justify-center text-white z-50">
-      
-      {/* Sun Loader */}
-      <div className="relative w-32 h-32 mb-8">
+    <div className="fixed inset-0 flex flex-col items-center justify-center overflow-hidden z-50">
 
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-20 h-20 bg-yellow-400 rounded-full"></div>
+      {/* SKY BACKGROUND */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#020024] via-[#090979] to-[#ff7e00] transition-all duration-1000"></div>
 
-        <div className="absolute bottom-0 w-full h-2 bg-orange-600"></div>
+      {/* HORIZON */}
+      <div className="absolute bottom-0 w-full h-32 bg-[#2c2c2c]"></div>
 
+      {/* SUN */}
+      <div
+        className="absolute left-1/2 -translate-x-1/2"
+        style={{
+          bottom: `${progress * 0.5}px`, // sun rises with percentage
+        }}
+      >
+        {/* Glow */}
+        <div className="absolute w-40 h-40 bg-yellow-400 rounded-full blur-3xl opacity-70"></div>
+
+        {/* Sun core */}
+        <div className="relative w-28 h-28 bg-gradient-to-br from-yellow-300 to-orange-500 rounded-full shadow-[0_0_60px_rgba(255,200,0,0.9)]"></div>
+
+        {/* Rays */}
+        <div className="absolute inset-0 animate-spin-slow">
+          {Array.from({ length: 8 }).map((_, i) => (
+            <div
+              key={i}
+              className="absolute w-1 h-16 bg-yellow-300 opacity-60 left-1/2 top-1/2 origin-bottom"
+              style={{
+                transform: `rotate(${i * 45}deg) translateX(-50%)`,
+              }}
+            />
+          ))}
+        </div>
       </div>
 
-      <h2 className="text-2xl font-semibold">{progress}%</h2>
-
+      {/* LOADING TEXT */}
+      <div className="absolute bottom-20 text-white text-2xl font-semibold">
+        Loading {progress}%
+      </div>
     </div>
   );
 }
