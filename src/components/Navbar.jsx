@@ -39,7 +39,7 @@ export default function Navbar() {
       {/* MOBILE MENU */}
       {isOpen && (
         <div className="md:hidden bg-white shadow-lg">
-          <nav className="flex flex-col items-center gap-6 py-6 text-gray-800 text-lg font-medium">
+          <nav className="flex flex-col items-center gap-6 py-6 text-gray-800 text-lg font-medium font-poppins">
 
             <NavItem text="About Echo Solar" link="/" closeMenu={() => setIsOpen(false)} />
             <NavItem text="Product" link="/product" closeMenu={() => setIsOpen(false)} />
