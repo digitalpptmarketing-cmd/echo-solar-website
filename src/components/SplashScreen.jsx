@@ -45,9 +45,7 @@ export default function SplashScreen({ onFinish }) {
          {/* Horizon */}
  <div className="absolute bottom-0 left-0 right-0 w-full h-30 bg-[#1a1a1a]" />
       {/* Loading Text */}
-      <div className="absolute bottom-16 text-white text-2xl font-light">
-        {progress}%
-      </div>
+      
     </div>
   );
 }
