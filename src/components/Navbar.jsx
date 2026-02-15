@@ -20,10 +20,10 @@ export default function Navbar() {
 
           {/* DESKTOP MENU */}
           <nav className="hidden md:flex items-center gap-10 text-gray-800 text-lg font-medium">
-            <NavItem text="About Echo Solar" />
-            <NavItem text="Product" />
-            <NavItem text="Career" />
-            <NavItem text="Contact Us" />
+            <NavItem text="About Echo Solar" link="/" />
+            <NavItem text="Product" link="/product" />
+            <NavItem text="Career" link="/career" />
+            <NavItem text="Contact Us" link="/contact" />
           </nav>
 
           {/* MOBILE HAMBURGER */}
@@ -40,10 +40,12 @@ export default function Navbar() {
       {isOpen && (
         <div className="md:hidden bg-white shadow-lg">
           <nav className="flex flex-col items-center gap-6 py-6 text-gray-800 text-lg font-medium">
-            <NavItem text="About Echo Solar" />
-            <NavItem text="Product" />
-            <NavItem text="Career" />
-            <NavItem text="Contact Us" />
+
+            <NavItem text="About Echo Solar" link="/" closeMenu={() => setIsOpen(false)} />
+            <NavItem text="Product" link="/product" closeMenu={() => setIsOpen(false)} />
+            <NavItem text="Career" link="/career" closeMenu={() => setIsOpen(false)} />
+            <NavItem text="Contact Us" link="/contact" closeMenu={() => setIsOpen(false)} />
+
           </nav>
         </div>
       )}
@@ -51,8 +53,14 @@ export default function Navbar() {
   );
 }
 
-const NavItem = ({ text }) => (
-  <div className="cursor-pointer hover:text-green-600">
+
+/* Nav Item Component */
+const NavItem = ({ text, link, closeMenu }) => (
+  <Link
+    to={link}
+    onClick={closeMenu}
+    className="cursor-pointer hover:text-green-600 transition"
+  >
     {text}
-  </div>
+  </Link>
 );
