@@ -8,8 +8,8 @@ export default function SplashScreen({ onFinish }) {
       setProgress((prev) => {
         if (prev >= 100) {
           clearInterval(timer);
-          setTimeout(onFinish, 500);
-          return 100;
+          setTimeout(onFinish, 700);
+          return 70;
         }
         return prev + 1;
       });
@@ -18,7 +18,7 @@ export default function SplashScreen({ onFinish }) {
     return () => clearInterval(timer);
   }, []);
 
-  // 🌈 Background Color Change (33% gap)
+  //  Background Color Change (33% gap)
   const getBackgroundColor = () => {
     if (progress <= 33) return "#000000"; // Black
     if (progress <= 66) return "#ff7a00"; // Orange
@@ -37,7 +37,7 @@ export default function SplashScreen({ onFinish }) {
       <div
         className="absolute bottom-0 left-1/2 -translate-x-1/2 transition-all duration-400"
         style={{
-          bottom: `${progress * 0.9}px`,
+          bottom: `${progress * 3}px`,
         }}
       >
         <div className="w-32 h-32  item-center rounded-full bg-gradient-to-br from-yellow-300 via-orange-400 to-orange-600 shadow-[0_0_90px_rgba(255,170,0,0.9)]" />
